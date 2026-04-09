@@ -27,4 +27,11 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
             loadNotes()
         }
     }
+//  Menambahkan fungsi updateNote agar ViewModel dapat berinteraksi dengan DatabaseHelper untuk proses update.
+    fun updateNote(id: Int, title: String, content: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateNote(id, title, content)
+            loadNotes()
+        }
+    }
 }

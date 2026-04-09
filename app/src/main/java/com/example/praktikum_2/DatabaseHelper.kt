@@ -35,4 +35,14 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, "notes.db", n
         val db = readableDatabase
         return db.rawQuery("SELECT * FROM Notes", null)
     }
+
+//    Menambahkan fungsi updateNote untuk memperbarui data di database SQLite berdasarkan ID.
+    fun updateNote(id: Int, title: String, content: String): Int {
+        val db = writableDatabase
+        val values = ContentValues().apply {
+            put("title", title)
+            put("content", content)
+        }
+        return db.update("Notes", values, "id = ?", arrayOf(id.toString()))
+    }
 }

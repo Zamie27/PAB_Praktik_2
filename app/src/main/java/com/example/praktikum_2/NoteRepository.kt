@@ -20,4 +20,8 @@ class NoteRepository(private val dbHelper: DatabaseHelper) {
     fun addNote(title: String, content: String) {
         dbHelper.insertNote(title, content)
     }
+//  Menambahkan fungsi updateNote agar ViewModel dapat berinteraksi dengan DatabaseHelper untuk proses update.
+    fun updateNote(id: Int, title: String, content: String) {
+        dbHelper.updateNote(id, title, content)
+    }
 }
